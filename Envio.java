@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @author - Evelin Virunurm
  *  
  */
 public class Envio
@@ -23,7 +23,6 @@ public class Envio
         this.paquete1 = null;
         this.paquete2 = null;
         this.paquete3 = null;
-
     }
 
     /**
@@ -31,7 +30,6 @@ public class Envio
      */
     public Paquete getPaquete1() {
         return paquete1;
-
     }
 
     /**
@@ -39,7 +37,6 @@ public class Envio
      */
     public Paquete getPaquete2() {
         return paquete2;
-
     }
 
     /**
@@ -47,7 +44,6 @@ public class Envio
      */
     public Paquete getPaquete3() {
         return paquete3;
-
     }
 
     /**
@@ -55,9 +51,12 @@ public class Envio
      * (dependerá de cuántos paquetes estén a null)
      */
     public int getNumeroPaquetes() {
-        //TODO
-       return 0;
-
+        //TODO igual se puede hacer con loop
+        int numPaquetes = 0;
+        if (this.getPaquete1() != null) {numPaquetes++;}
+        if (this.getPaquete2() != null) {numPaquetes++;}
+        if (this.getPaquete3() != null) {numPaquetes++;}
+        return numPaquetes;
     }
 
     /**
@@ -65,9 +64,8 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean isEnvioCompleto() {
-       //TODO
-       return false;
-
+       //TODO igual entre parentesis
+       return getNumeroPaquetes() == 3 ? true : false;
     }
 
     /**
@@ -78,9 +76,21 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-       //TODO
+        //TODO comporbar que no se puede hacer loop.
+        if (isEnvioCompleto()) {
+            System.out.println("\n");
+            System.out.println("--------------------------------------");
+            System.out.println("No se admiten más paquetes en el envío");
+            return;
+        }
         
-
+        if (this.getPaquete1() == null) {
+            this.paquete1 = paquete;
+        } else if (this.getPaquete2() == null) {
+            this.paquete2 = paquete;
+        } else {
+            this.paquete3 = paquete;
+        }
     }
 
     /**
@@ -92,12 +102,22 @@ public class Envio
      *      - se calcula el coste en euros según el precio del Kg 
      *      (cada Kg. no completo se cobra entero, 5.8 Kg. se cobran como 6, 5.3 Kg. se cobran como 6)
      *     
-     *  
      */
     public double calcularCosteTotalEnvio() {
         //TODO
-       return 0;
-
+        double pesoFacturableTotal = 0;
+        double coste = 0;
+        if (getPaquete1() != null) {
+            pesoFacturableTotal += this.getPaquete1().calcularPesoFacturable();
+        }
+        if (getPaquete2() != null) {
+            pesoFacturableTotal += this.getPaquete2().calcularPesoFacturable();
+        }
+        if (getPaquete3() != null) {
+            pesoFacturableTotal += this.getPaquete3().calcularPesoFacturable();
+        }
+        coste = Math.ceil(pesoFacturableTotal) * this.PRECIO_KILO;
+        return coste;
     }
 
     /**
@@ -106,8 +126,35 @@ public class Envio
      * (leer enunciado)
      */
     public String toString() {
-       //TODO
-       return null;
+       //TODO formatear
+       String str = "Nº de paquetes: " + this.getNumeroPaquetes() + "\n" +
+                    "Descripción del paquete\n" +
+                    "                Alto:" + " " + "\n" +
+                    "               Ancho:" + " " + "\n" +
+                    "               Largo:" + " " + "\n" +
+                    "           Peso real:" + " " + "\n" +
+                    "             Volumen:" + " " + "\n" +
+                    "    Peso volumétrico:" + " " + "\n" +
+                    "\n" +
+                    "Descripción del paquete\n" +
+                    "                Alto:" + " " + "\n" +
+                    "               Ancho:" + " " + "\n" +
+                    "               Largo:" + " " + "\n" +
+                    "           Peso real:" + " " + "\n" +
+                    "             Volumen:" + " " + "\n" +
+                    "    Peso volumétrico:" + " " + "\n" +
+                    "\n" +
+                    "Descripción del paquete\n" +
+                    "                Alto:" + " " + "\n" +
+                    "               Ancho:" + " " + "\n" +
+                    "               Largo:" + " " + "\n" +
+                    "           Peso real:" + " " + "\n" +
+                    "             Volumen:" + " " + "\n" +
+                    "    Peso volumétrico:" + " " + "\n" +
+                    "\n" +
+                    "   Coste total envío:" + this.calcularCosteTotalEnvio() + "\n";
+       
+       return str;
     }
 
     /**

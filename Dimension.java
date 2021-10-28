@@ -2,7 +2,7 @@
 /**
  *  Representa una dimensión
  *  
- *  @author - Nombre autor
+ *  @author - Evelin Virunurm
  */
 public class Dimension  
 {
@@ -46,9 +46,8 @@ public class Dimension
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-       //TODO
-       return 0;
-
+        double volumen = this.getAlto() * this.getAncho() * this.getLargo();
+        return volumen;
     }
     
     /**
@@ -56,8 +55,8 @@ public class Dimension
      */
     public Dimension clone() {
         //TODO
-        return null;
-
+        Dimension dimensionClone = new Dimension(this.getAlto(), this.getAncho(), this.getLargo());
+        return dimensionClone;
     }
 
     /**
@@ -65,8 +64,11 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        //TODO
-        return null;
+        //TODO alinear el texto
+        String str = "Alto:     " + this.getAlto() + "(cm)\n" +
+                     "Ancho:    " + this.getAncho() + "(cm)\n" +
+                     "Largo:    " + this.getLargo() + "(cm)\n";
+        return str;
 
     }
 
