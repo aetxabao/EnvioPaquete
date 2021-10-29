@@ -51,7 +51,6 @@ public class Envio
      * (dependerá de cuántos paquetes estén a null)
      */
     public int getNumeroPaquetes() {
-        //TODO igual se puede hacer con loop
         int numPaquetes = 0;
         if (this.getPaquete1() != null) {numPaquetes++;}
         if (this.getPaquete2() != null) {numPaquetes++;}
@@ -64,7 +63,6 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean isEnvioCompleto() {
-       //TODO igual entre parentesis
        return getNumeroPaquetes() == 3 ? true : false;
     }
 
@@ -76,14 +74,10 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-        //TODO comporbar que no se puede hacer loop.
         if (isEnvioCompleto()) {
-            System.out.println("\n");
-            System.out.println("--------------------------------------");
             System.out.println("No se admiten más paquetes en el envío");
             return;
         }
-        
         if (this.getPaquete1() == null) {
             this.paquete1 = paquete;
         } else if (this.getPaquete2() == null) {
@@ -104,7 +98,6 @@ public class Envio
      *     
      */
     public double calcularCosteTotalEnvio() {
-        //TODO
         double pesoFacturableTotal = 0;
         double coste = 0;
         if (getPaquete1() != null) {
@@ -116,45 +109,30 @@ public class Envio
         if (getPaquete3() != null) {
             pesoFacturableTotal += this.getPaquete3().calcularPesoFacturable();
         }
-        coste = Math.ceil(pesoFacturableTotal) * this.PRECIO_KILO;
-        return coste;
+        return Math.ceil(pesoFacturableTotal) * this.PRECIO_KILO;
     }
 
     /**
      * Representación textual del envío
      * con el formato exacto indicado
-     * (leer enunciado)
+     * 
      */
     public String toString() {
-       //TODO formatear
-       String str = "Nº de paquetes: " + this.getNumeroPaquetes() + "\n" +
-                    "Descripción del paquete\n" +
-                    "                Alto:" + " " + "\n" +
-                    "               Ancho:" + " " + "\n" +
-                    "               Largo:" + " " + "\n" +
-                    "           Peso real:" + " " + "\n" +
-                    "             Volumen:" + " " + "\n" +
-                    "    Peso volumétrico:" + " " + "\n" +
-                    "\n" +
-                    "Descripción del paquete\n" +
-                    "                Alto:" + " " + "\n" +
-                    "               Ancho:" + " " + "\n" +
-                    "               Largo:" + " " + "\n" +
-                    "           Peso real:" + " " + "\n" +
-                    "             Volumen:" + " " + "\n" +
-                    "    Peso volumétrico:" + " " + "\n" +
-                    "\n" +
-                    "Descripción del paquete\n" +
-                    "                Alto:" + " " + "\n" +
-                    "               Ancho:" + " " + "\n" +
-                    "               Largo:" + " " + "\n" +
-                    "           Peso real:" + " " + "\n" +
-                    "             Volumen:" + " " + "\n" +
-                    "    Peso volumétrico:" + " " + "\n" +
-                    "\n" +
-                    "   Coste total envío:" + this.calcularCosteTotalEnvio() + "\n";
-       
-       return str;
+        String str = "Nº de paquetes: " + this.getNumeroPaquetes() + "\n";
+        if (paquete1 != null) {
+            str += paquete1.toString() + "\n";
+        }
+        if (paquete2 != null) {
+            str += paquete2.toString() + "\n";
+        }
+        if (paquete3 != null) {
+            str += paquete3.toString() + "\n";
+        }
+        String costeEnvio = String.format("%20s%10.2f€\n\n---------------------------------", 
+                                            "Coste total envío:", 
+                                            this.calcularCosteTotalEnvio());
+        str += costeEnvio;
+        return String.format(str);
     }
 
     /**

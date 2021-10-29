@@ -29,10 +29,9 @@ public class Paquete
      *  Se crea aquí el generador
      */
     public Paquete(double alto, double ancho, double largo)    {
-        //TODO compobar que el num generado random esta ok
         this.dimension = new Dimension(alto, ancho, largo);
-        // this.peso = (generador.nextDouble() * 7) + 2;
-        this.peso = 2;
+        generador = new Random();
+        this.peso = generador.nextDouble() * 6 + 2;
     }
 
     /**
@@ -64,8 +63,6 @@ public class Paquete
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-       //TODO comprobar que ok
-       // double volumen = this.dimension.getVolumen();
        return this.dimension.getVolumen();
     }
 
@@ -74,8 +71,6 @@ public class Paquete
      * Peso volumétrico = volumen del paquete / 5000
      */
     public double getPesoVolumetrico() {
-        //TODO comprobar que ok
-        // double pesoVolumentrico = this.getVolumen() / 5000.0;
         return this.getVolumen() / 5000.0;
     }
 
@@ -85,8 +80,6 @@ public class Paquete
      *      
      */
     public double calcularPesoFacturable() {
-        //TODO comprobar que ok
-        // double pesoFacturable = this.getPesoVolumetrico() > this.getPeso() ? this.getPesoVolumetrico() : this.getPeso();
         return (this.getPesoVolumetrico() > this.getPeso() ? this.getPesoVolumetrico() : this.getPeso());
     }
 
@@ -96,28 +89,36 @@ public class Paquete
      * Se obtienen copias también de los objetos que contenga
      */
     public Paquete clone() {
-        //TODO comprobar que ok
         Paquete paqueteCopy = new Paquete(this.dimension.clone(), this.peso);
         return paqueteCopy;
     }
 
     /**
      * Representación textual del paquete
-     *  (leer enunciado)
+     * 
      */
     public String toString() {
-        //TODO ask teacher if we should use format since we have to return a simple string
-        String str = "Descripcicón del paquete\n" + 
-                     "                   :" + "         :" + 
-                     "               Alto:" + "        00" +
-                     "              Ancho:" + "         :" +
-                     "              Largo:" + "         :" +
-                     "          Peso real:" + "         :" +
-                     "            Volumen:" + "         :" +
-                     "   Peso volumétrico:" + "         :";
-                     
+       String str = String.format("Descripcicón del paquete\n" +
+                                "%20s%10.2f(cm)\n" +
+                                "%20s%10.2f(cm)\n" +
+                                "%20s%10.2f(cm)\n" +
+                                "%20s%10.2f(Kg)\n" +
+                                "%20s%10.2f(cm3)\n" +
+                                "%20s%10.2f(Kg)\n", 
+                                "Alto:",
+                                this.dimension.getAlto(),
+                                "Ancho:",
+                                this.dimension.getAncho(),
+                                "Largo:",
+                                this.dimension.getLargo(),
+                                "Peso real:",
+                                this.getPeso(),
+                                "Volumen:",
+                                this.getVolumen(),
+                                "Peso volumétrico:",
+                                this.getPesoVolumetrico()
+       );         
         return str;
-
     }
     
     /**

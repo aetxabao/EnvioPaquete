@@ -1,4 +1,3 @@
-
 /**
  *  Representa una dimensión
  *  
@@ -17,7 +16,6 @@ public class Dimension
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
-
     }   
 
     /**
@@ -54,7 +52,6 @@ public class Dimension
      * Devuelve una copia exacta al objeto actual
      */
     public Dimension clone() {
-        //TODO
         Dimension dimensionClone = new Dimension(this.getAlto(), this.getAncho(), this.getLargo());
         return dimensionClone;
     }
@@ -64,12 +61,8 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        //TODO alinear el texto
-        String str = "Alto:     " + this.getAlto() + "(cm)\n" +
-                     "Ancho:    " + this.getAncho() + "(cm)\n" +
-                     "Largo:    " + this.getLargo() + "(cm)\n";
+        String str = String.format("%10s%20.2f(cm)\n%10s%20.2f(cm)\n%10s%20.2f(cm)", "Alto:", this.alto, "Ancho:", this.ancho, "Largo:", this.largo);
         return str;
-
     }
 
     /**
