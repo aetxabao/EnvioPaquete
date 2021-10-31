@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @author -   Aritz Arrondo Villaplana
  *  
  */
 public class Envio
@@ -31,7 +31,7 @@ public class Envio
      */
     public Paquete getPaquete1() {
         return paquete1;
-
+        
     }
 
     /**
@@ -39,7 +39,7 @@ public class Envio
      */
     public Paquete getPaquete2() {
         return paquete2;
-
+        
     }
 
     /**
@@ -47,7 +47,7 @@ public class Envio
      */
     public Paquete getPaquete3() {
         return paquete3;
-
+        
     }
 
     /**
@@ -56,8 +56,20 @@ public class Envio
      */
     public int getNumeroPaquetes() {
         //TODO
-       return 0;
-
+        int numeroPaquetes = 0;
+        if(this.getPaquete1() != null)
+        {
+            numeroPaquetes ++;
+        }
+        if(this.getPaquete2() != null)
+        {
+            numeroPaquetes ++;
+        }
+        if(this.getPaquete3() != null)
+        {
+            numeroPaquetes ++;
+        }
+        return numeroPaquetes;
     }
 
     /**
@@ -65,9 +77,7 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean isEnvioCompleto() {
-       //TODO
-       return false;
-
+        return getNumeroPaquetes() == 3 ? true : false;
     }
 
     /**
@@ -78,9 +88,24 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-       //TODO
+        //TODO
+        //envio completo
+        int numeroPaquetes = 0;
+        if(isEnvioCompleto()){
+            System.out.println("No se admiten más paquetes en el envío"); 
+        }
         
-
+        //envio no completo
+        if(getPaquete1() == null)
+        {
+            this.paquete1 = paquete;
+        }else if(getPaquete2() == null)
+        {
+            this.paquete2 = paquete;
+        }else if(getPaquete3() == null)
+        {
+            this.paquete3 = paquete;
+        }
     }
 
     /**
@@ -96,8 +121,21 @@ public class Envio
      */
     public double calcularCosteTotalEnvio() {
         //TODO
-       return 0;
-
+        double pesoFacturable = 0;
+        if(getPaquete1() != null) 
+        {
+            pesoFacturable += getPaquete1().calcularPesoFacturable();
+        }
+        if(getPaquete2() != null)
+        {
+            pesoFacturable += getPaquete2().calcularPesoFacturable();
+        }
+        if(getPaquete3() != null)
+        {
+            pesoFacturable += getPaquete3().calcularPesoFacturable();
+        }
+        
+        return Math.ceil(pesoFacturable) * this.PRECIO_KILO;
     }
 
     /**
@@ -106,8 +144,19 @@ public class Envio
      * (leer enunciado)
      */
     public String toString() {
-       //TODO
-       return null;
+        //TODO
+        String str = "Nº de paquetes: " + getNumeroPaquetes() + "\n";
+        if (paquete1 != null) {
+            str += paquete1.toString() + "\n";
+        }
+        if (paquete2 != null) {
+            str += paquete2.toString() + "\n";
+        }
+        if (paquete3 != null) {
+            str += paquete3.toString() + "\n";
+        }
+        str += String.format("%20s%10.2f€","Coste total envío:",calcularCosteTotalEnvio());
+        return str;
     }
 
     /**
@@ -118,6 +167,4 @@ public class Envio
     public void print() {
         System.out.println(this.toString());
     }
-
-    
 }

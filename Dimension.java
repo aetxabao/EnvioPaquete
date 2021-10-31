@@ -2,7 +2,7 @@
 /**
  *  Representa una dimensión
  *  
- *  @author - Nombre autor
+ *  @author - Aritz Arrondo Villaplana
  */
 public class Dimension  
 {
@@ -46,9 +46,10 @@ public class Dimension
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-       //TODO
-       return 0;
-
+       
+        double volumen = this.alto*this.ancho*this.largo;
+        return volumen;
+        
     }
     
     /**
@@ -56,8 +57,8 @@ public class Dimension
      */
     public Dimension clone() {
         //TODO
-        return null;
-
+        Dimension clone = new Dimension(this.alto,this.ancho,this.largo);
+        return clone;
     }
 
     /**
@@ -65,8 +66,11 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        //TODO
-        return null;
+        String str="";
+        str += String.format("%20s%10.2f(cm)\n","Alto:",this.alto);
+        str += String.format("%20s%10.2f(cm)\n","Ancho:",this.ancho);
+        str += String.format("%20s%10.2f(cm)\n","Largo:",this.largo);
+        return str;
 
     }
 
