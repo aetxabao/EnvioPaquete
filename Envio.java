@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @author -   Aitor Amigot
  *  
  */
 public class Envio
@@ -55,9 +55,19 @@ public class Envio
      * (dependerá de cuántos paquetes estén a null)
      */
     public int getNumeroPaquetes() {
-        //TODO
-       return 0;
-
+       int numPaquetes = 0;
+       if(paquete1 != null){
+           numPaquetes++;
+       }
+       
+       if(paquete2 != null){
+           numPaquetes++;
+       }
+       
+       if(paquete3 != null){
+           numPaquetes++;
+       }
+       return numPaquetes;
     }
 
     /**
@@ -65,9 +75,7 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean isEnvioCompleto() {
-       //TODO
-       return false;
-
+       return (paquete1 != null && paquete2 != null && paquete3 != null);
     }
 
     /**
@@ -78,9 +86,19 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-       //TODO
-        
-
+       if(isEnvioCompleto()){
+          System.out.println("No se admiten más paquetes en el envío"); 
+          return;
+       }
+       
+       if(paquete1 == null){
+           paquete1 = paquete;
+       } else if(paquete2 == null){
+           paquete2 = paquete;
+       }else{
+           paquete3 = paquete;
+       }
+    
     }
 
     /**
@@ -95,9 +113,19 @@ public class Envio
      *  
      */
     public double calcularCosteTotalEnvio() {
-        //TODO
-       return 0;
-
+       double pesoTotal = 0.0;
+       if(paquete1 != null){
+           pesoTotal += paquete1.calcularPesoFacturable();
+       }
+       
+       if(paquete2 != null){
+           pesoTotal += paquete2.calcularPesoFacturable();
+       }
+       
+       if(paquete3 != null){
+           pesoTotal += paquete3.calcularPesoFacturable();
+       }
+       return Math.ceil(pesoTotal) * PRECIO_KILO;
     }
 
     /**
@@ -106,8 +134,22 @@ public class Envio
      * (leer enunciado)
      */
     public String toString() {
-       //TODO
-       return null;
+       String s = "Nº de paquetes:" + getNumeroPaquetes() + "\n";
+       if(paquete1 != null){
+           s += paquete1.toString() + "\n";    
+       }
+       
+       if(paquete2 != null){
+           s += paquete2.toString() + "\n";    
+       }
+       
+       if(paquete3 != null){
+           s += paquete3.toString() + "\n";    
+       }
+       String ss = String.format("\n%20s%10.2f€\n", "Coste total envío", calcularCosteTotalEnvio());
+       ss += "--------------------------------------";
+       s += ss;
+       return s;
     }
 
     /**
