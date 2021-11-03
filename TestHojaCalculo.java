@@ -16,7 +16,7 @@ public class TestHojaCalculo {
         envio.print();
 
         Dimension dimension = new Dimension(50, 50, 70);
-        Paquete paquete3 = new Paquete(dimension, 13);
+        Paquete paquete3 = new Paquete(dimension.getAlto(), dimension.getAncho(), dimension.getLargo());
         envio.addPaquete(paquete3);
         envio.print();
         

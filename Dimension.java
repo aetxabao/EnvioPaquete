@@ -61,7 +61,7 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        String str = String.format("%10s%20.2f(cm)\n%10s%20.2f(cm)\n%10s%20.2f(cm)", "Alto:", this.alto, "Ancho:", this.ancho, "Largo:", this.largo);
+        String str = String.format("%20s%10.2f(cm)\n%20s%10.2f(cm)\n%20s%10.2f(cm)", "Alto:", this.alto, "Ancho:", this.ancho, "Largo:", this.largo);
         return str;
     }
 
