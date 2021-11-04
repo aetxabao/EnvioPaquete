@@ -1,9 +1,7 @@
 
 /**
  * test
- * 
- * @author (Inigo) 
-
+ * @author (inigo salinas) 
  */
 public class TestHojaCalculo
 {
@@ -13,21 +11,24 @@ public class TestHojaCalculo
     /**
      * Constructor for objects of class TestHojaCalculo
      */
-    public TestHojaCalculo()
-    {
-        // initialise instance variables
-        x = 0;
-    }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+        public static void main(String[] args)
+        {
+            Paquete paquete1 = new Paquete();
+            Paquete paquete2 = new Paquete(40,60,40);
+            
+            Envio envio1 = new Envio();
+            envio1.addPaquete(paquete1);
+            envio1.addPaquete(paquete2);
+            envio1.print();
+            
+            Paquete paquete3 = new Paquete(50,50,70);
+            envio1.addPaquete(paquete3);
+            envio1.print();
+            
+            Paquete paquete2Clone = new Paquete(paquete2.getDimension(), paquete2.getPeso());
+            envio1.addPaquete(paquete2Clone);
+        }
+        
+    
 }
