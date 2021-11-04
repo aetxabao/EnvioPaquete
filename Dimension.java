@@ -2,7 +2,7 @@
 /**
  *  Representa una dimensión
  *  
- *  @author - Nombre autor
+ * @author -   Inigo salinas..
  */
 public class Dimension  
 {
@@ -45,18 +45,18 @@ public class Dimension
      * calcula y devuelve el volumen de la dimensión (en cm3)
      * El volumen = alto x ancho x largo
      */
-    public double getVolumen() {
-       //TODO
-       return 0;
-
+    public double getVolumen( ) {
+        double volumen; 
+       volumen= (largo*ancho*alto); 
+       return volumen;
     }
     
     /**
      * Devuelve una copia exacta al objeto actual
      */
     public Dimension clone() {
-        //TODO
-        return null;
+        Dimension clone = new Dimension (this.alto, this.ancho, this.largo);
+        return clone;
 
     }
 
@@ -65,8 +65,11 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        //TODO
-        return null;
+        String str="";
+        str+=String.format("%20s%10.2f(cm)\n" , "Alto:",this.getAlto());
+        str+=String.format("%20s%10.2f(cm)\n" , "Largo:",this.getLargo());
+        str+=String.format("%20s%10.2f(cm)\n" , "Ancho:",this.getAncho());
+        return str;
 
     }
 

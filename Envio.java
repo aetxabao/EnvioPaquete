@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @author -   Inigo salinas
  *  
  */
 public class Envio

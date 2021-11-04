@@ -3,7 +3,7 @@ import java.util.Random;
  *  Un objeto de esta clase guarda los datos de un
  *  paquete
  * 
- * @author - Nombre autor
+ * @author -   Inigo salinas..
  *  
  */
 public class Paquete 
@@ -18,9 +18,10 @@ public class Paquete
      * alto, ancho, largo (en cm) y peso 8 Kg
      */
     public Paquete()    {
-        //TODO
-         
-
+        
+        dimension= new Dimension(40,30,50);
+        peso=8;
+        
     }
 
     /**
@@ -30,7 +31,9 @@ public class Paquete
      *  Se crea aquí el generador
      */
     public Paquete(double alto, double ancho, double largo)    {
-        //TODO
+        
+        dimension= new Dimension(alto,ancho,largo);
+        peso =(int)(Math.random()*8+2);
 
     }
 
@@ -40,7 +43,9 @@ public class Paquete
      * 
      */
     public Paquete(Dimension dimension, double peso)    {
-        //TODO
+        
+        this.dimension=dimension;
+        this.peso=peso;
 
     }
 
@@ -65,8 +70,8 @@ public class Paquete
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-       //TODO
-       return 0;
+       
+       return dimension.getVolumen();
 
     }
 
@@ -75,8 +80,8 @@ public class Paquete
      * Peso volumétrico = volumen del paquete / 5000
      */
     public double getPesoVolumetrico() {
-        //TODO
-       return 0;
+    
+       return (getVolumen()/5000);
 
     }
 
@@ -86,9 +91,15 @@ public class Paquete
      *      
      */
     public double calcularPesoFacturable() {
-        //TODO
-       return 0;
-
+        if (getPesoVolumetrico() > this.peso) 
+        {
+            return getPesoVolumetrico();
+        }
+        else
+        {
+            return this.peso;
+        }
+        
     }
 
 
@@ -98,7 +109,8 @@ public class Paquete
      */
     public Paquete clone() {
         //TODO
-       return null;
+       Paquete paqueteClonado = new Paquete(dimension,peso);
+       return paqueteClonado;
 
     }
 
@@ -108,7 +120,15 @@ public class Paquete
      */
     public String toString() {
         //TODO
-       return null;
+       String str="";
+       str+=String.format("Descripcion del paquete\n");
+       str+=String.format("%20s%10.2f(cm)\n" , "Alto:",this.dimension.getAlto());
+       str+=String.format("%20s%10.2f(cm)\n" , "Largo:",this.dimension.getLargo());
+       str+=String.format("%20s%10.2f(cm)\n" , "Ancho:",this.dimension.getAncho());
+       str+=String.format("%20s%10.2f(Kg)\n" , "Peso real:",this.peso );
+       str+=String.format("%20s%10.2f(cm3)\n" , "Volumen:",this.getVolumen() );
+       str+=String.format("%20s%10.2f(Kg\n" , "Peso volumetrico:",this.getPesoVolumetrico());
+       return str;
 
     }
     
