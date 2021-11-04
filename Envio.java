@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @author - Carlos Alonso
  *  
  */
 public class Envio
