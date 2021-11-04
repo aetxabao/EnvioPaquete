@@ -2,7 +2,7 @@
 /**
  *  Representa una dimensión
  *  
- *  @author - Nombre autor
+ *  @author - Bautista
  */
 public class Dimension  
 {
@@ -46,8 +46,7 @@ public class Dimension
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-       //TODO
-       return 0;
+       return alto * ancho * largo;
 
     }
     
@@ -55,9 +54,8 @@ public class Dimension
      * Devuelve una copia exacta al objeto actual
      */
     public Dimension clone() {
-        //TODO
-        return null;
-
+        Dimension clon = new Dimension(alto,ancho,largo);
+        return clon;
     }
 
     /**
@@ -65,8 +63,9 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        //TODO
-        return null;
+        String lineaFormateada = String.format("%20s%10.2d%4s\n%20s%10.2d\n%20s%10.2d\n",
+                                "Alto:", alto,"(cm)","Ancho:", ancho,"(cm)","Largo:",largo,"(cm)");
+        return lineaFormateada;
 
     }
 
