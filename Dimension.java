@@ -2,7 +2,7 @@
 /**
  *  Representa una dimensión
  *  
- *  @author - Nombre autor
+ *  @author - Carlos Conde Zudaire
  */
 public class Dimension  
 {
@@ -47,8 +47,9 @@ public class Dimension
      */
     public double getVolumen() {
        //TODO
-       return 0;
-
+       double volumen;
+       volumen = alto * ancho * largo;
+       return volumen; 
     }
     
     /**
@@ -56,8 +57,8 @@ public class Dimension
      */
     public Dimension clone() {
         //TODO
-        return null;
-
+        Dimension dimensionClon = new Dimension(alto, ancho, largo);
+        return dimensionClon;
     }
 
     /**
@@ -66,7 +67,8 @@ public class Dimension
      */
     public String toString() {
         //TODO
-        return null;
+        String str = String.format("%20s%10.2f%s\n%20s%10.2f%s\n%20s%10.2f%s", "Alto: ", alto, "(cm)", "Ancho: ", ancho, "(cm)", "Largo: ", largo, "(cm)");
+        return str;
 
     }
 

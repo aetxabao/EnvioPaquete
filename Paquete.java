@@ -3,7 +3,7 @@ import java.util.Random;
  *  Un objeto de esta clase guarda los datos de un
  *  paquete
  * 
- * @author - Nombre autor
+ * @author - Carlos Conde Zudaire
  *  
  */
 public class Paquete 
@@ -19,8 +19,8 @@ public class Paquete
      */
     public Paquete()    {
         //TODO
-         
-
+        dimension = new Dimension(40, 30, 50);
+        peso = 8;
     }
 
     /**
@@ -31,7 +31,9 @@ public class Paquete
      */
     public Paquete(double alto, double ancho, double largo)    {
         //TODO
-
+        dimension = new Dimension(alto, ancho, largo);
+        generador = new Random();
+        peso = generador.nextInt(6) + 2;
     }
 
     /**
@@ -41,7 +43,8 @@ public class Paquete
      */
     public Paquete(Dimension dimension, double peso)    {
         //TODO
-
+        this.dimension = dimension;
+        this.peso = peso;
     }
 
     /**
@@ -66,7 +69,7 @@ public class Paquete
      */
     public double getVolumen() {
        //TODO
-       return 0;
+       return dimension.getVolumen();
 
     }
 
@@ -76,7 +79,8 @@ public class Paquete
      */
     public double getPesoVolumetrico() {
         //TODO
-       return 0;
+       double PesoVolumetrico = getVolumen() / 5000; 
+       return PesoVolumetrico;
 
     }
 
@@ -87,8 +91,11 @@ public class Paquete
      */
     public double calcularPesoFacturable() {
         //TODO
-       return 0;
-
+       if(peso > getPesoVolumetrico()){
+           return peso;
+       }else{
+           return getPesoVolumetrico();    
+       }
     }
 
 
@@ -98,7 +105,8 @@ public class Paquete
      */
     public Paquete clone() {
         //TODO
-       return null;
+       Paquete paqueteClon = new Paquete(dimension, peso); 
+       return paqueteClon;
 
     }
 
@@ -108,7 +116,8 @@ public class Paquete
      */
     public String toString() {
         //TODO
-       return null;
+       String str = String.format("Descripción del paquete\n"+"%20s%10.2f%s\n"+"%20s%10.2f%s\n"+"%20s%10.2f%s\n"+"%20s%10.2f%s\n"+"%20s%10.2f%s\n"+"%20s%10.2f%s\n","Alto:", dimension.getAlto(), "(cm)","Ancho:", dimension.getAncho(), "(cm)","Largo:", dimension.getLargo(), "(cm)","Peso real", peso, "(kg)","Volumen:", getVolumen(), "(cm3)","Peso volumétrico:", getPesoVolumetrico(),"(kg)"); 
+       return str;
 
     }
     
