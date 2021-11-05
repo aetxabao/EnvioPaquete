@@ -4,7 +4,7 @@
  *  
  *  @author - Bautista
  */
-public class Dimension  
+public class Dimension extends TestHojaCalculo  
 {
     private double alto;
     private double ancho;

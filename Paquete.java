@@ -98,8 +98,8 @@ public class Paquete
      * Se obtienen copias también de los objetos que contenga
      */
     public Paquete clone() {
-        //TODO
-       return null;
+        Paquete paqueteNuevo = new Paquete(this.dimension.clone(), this.peso);
+        return paqueteNuevo;
 
     }
 
@@ -108,11 +108,13 @@ public class Paquete
      *  (leer enunciado)
      */
     public String toString() {
-        String lineaFormateada = String.format("%20s%10.2d%5s\n%20s%10.2d%5s\n%20s%10.2d%5s\n%20s%10.2d%5s\n%20s%10.2d%5s\n%20s%10.2d%5s\n",
-                                    "Alto:",dimension.getAlto(),"(cm)","Ancho:",dimension.getAncho(),"(cm)",
-                                    "Largo:",dimension.getLargo(),"(cm)","Peso Real:",peso,"(kg)","Volumen:",getVolumen(),"(cm3)",
-                                    "Peso Volumetrico:",getPesoVolumetrico(),"(kg)");
-       return lineaFormateada;
+        String str = String.format("%20s%10.2f(cm)\n","Alto:", this.dimension.getAlto());
+        str += String.format("%20s%10.2f(cm)\n", "Ancho:", this.dimension.getAncho());
+        str += String.format("%20s%10.2f(cm)\n", "Largo:", this.dimension.getLargo());
+        str += String.format("%20s%10.2f(kg)\n", "Peso Real:", this.getPeso());
+        str += String.format("%20s%10.2f(cm3)\n", "Volumen:", this.dimension.getVolumen());
+        str += String.format("%20s%10.2f(kg)\n", "Peso Volumetrico:", this.getPesoVolumetrico());
+       return str;
 
     }
     

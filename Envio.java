@@ -4,10 +4,10 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @author -   Bautista
  *  
  */
-public class Envio
+public class Envio 
 {
     private final double PRECIO_KILO = 2.2;  // precio coste envío Kg. en euros
     private Paquete paquete1;
@@ -55,8 +55,20 @@ public class Envio
      * (dependerá de cuántos paquetes estén a null)
      */
     public int getNumeroPaquetes() {
-        //TODO
-       return 0;
+        int contadorPaquetes = 0;
+        if(this.getPaquete1() != null)
+        {
+            contadorPaquetes++; 
+        }
+        if(this.getPaquete2() != null)
+        {
+            contadorPaquetes++; 
+        }
+        if(this.getPaquete3() != null)
+        {
+            contadorPaquetes++; 
+        }
+       return contadorPaquetes;
 
     }
 
@@ -65,9 +77,8 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean isEnvioCompleto() {
-       //TODO
-       return false;
-
+       int contadorPaquetes = getNumeroPaquetes();
+       return contadorPaquetes == 3;
     }
 
     /**
@@ -78,8 +89,22 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-       //TODO
-        
+       if(isEnvioCompleto())
+       {
+           System.out.println("No se admiten mas paquetes");
+       }
+       else if(paquete1 == null)
+       {
+           paquete = paquete1;
+       }
+       else if(paquete2 == null)
+       {
+           paquete = paquete2;
+       }
+       else if(paquete3 == null)
+       {
+           paquete = paquete3;
+       }
 
     }
 
@@ -95,8 +120,22 @@ public class Envio
      *  
      */
     public double calcularCosteTotalEnvio() {
-        //TODO
-       return 0;
+        double precioTotal = 0;
+        double precioFinal = 0;
+        if(getPaquete1() != null)
+        {
+            precioTotal = getPaquete1().calcularPesoFacturable();
+        }
+        if(getPaquete2() != null)
+        {
+            precioTotal += getPaquete2().calcularPesoFacturable();
+        }
+        if(getPaquete3() != null)
+        {
+            precioTotal += getPaquete3().calcularPesoFacturable();
+        }
+        precioFinal = Math.ceil(precioTotal * PRECIO_KILO);
+       return precioFinal;
 
     }
 
@@ -106,8 +145,12 @@ public class Envio
      * (leer enunciado)
      */
     public String toString() {
-       //TODO
-       return null;
+       String str = "";
+       str += paquete1.toString();
+       str += paquete2.toString();
+       str += paquete3.toString();
+       str += "Coste total envío: " + calcularCosteTotalEnvio();
+       return str;
     }
 
     /**
