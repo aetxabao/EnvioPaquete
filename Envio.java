@@ -19,7 +19,8 @@ public class Envio
      * Inicializa los paquetes a null (inicialmente
      * el envío no tiene paquetes)
      */
-    public Envio()    {
+    public Envio()   
+    {
         this.paquete1 = null;
         this.paquete2 = null;
         this.paquete3 = null;
@@ -29,7 +30,8 @@ public class Envio
     /**
      * accesor para el paquete1
      */
-    public Paquete getPaquete1() {
+    public Paquete getPaquete1()
+    {
         return paquete1;
 
     }
@@ -37,7 +39,8 @@ public class Envio
     /**
      * accesor para el paquete2
      */
-    public Paquete getPaquete2() {
+    public Paquete getPaquete2()
+    {
         return paquete2;
 
     }
@@ -45,7 +48,8 @@ public class Envio
     /**
      * accesor para el paquete3
      */
-    public Paquete getPaquete3() {
+    public Paquete getPaquete3() 
+    {
         return paquete3;
 
     }
@@ -54,7 +58,8 @@ public class Envio
      * Devuelve el nº de paquetes en el envío
      * (dependerá de cuántos paquetes estén a null)
      */
-    public int getNumeroPaquetes() {
+    public int getNumeroPaquetes() 
+    {
         //TODO
        return 0;
 
@@ -64,7 +69,8 @@ public class Envio
      * Devuelve true si el envío está completo, false en otro caso
      * (tiene exactamente 3 paquetes)
      */
-    public boolean isEnvioCompleto() {
+    public boolean isEnvioCompleto() 
+    {
        //TODO
        return false;
 
@@ -77,7 +83,8 @@ public class Envio
      * Si no está completo se añade el paquete al envío teniendo en cuenta
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
-    public void addPaquete(Paquete paquete) {
+    public void addPaquete(Paquete paquete)
+    {
        //TODO
         
 
@@ -94,7 +101,8 @@ public class Envio
      *     
      *  
      */
-    public double calcularCosteTotalEnvio() {
+    public double calcularCosteTotalEnvio()
+    {
         //TODO
        return 0;
 
@@ -105,7 +113,8 @@ public class Envio
      * con el formato exacto indicado
      * (leer enunciado)
      */
-    public String toString() {
+    public String toString() 
+    {
        //TODO
        return null;
     }
@@ -115,9 +124,9 @@ public class Envio
      * Este método se incluye como método de prueba
      * de la clase Envio
      */
-    public void print() {
+    public void print() 
+    {
         System.out.println(this.toString());
     }
 
-    
 }

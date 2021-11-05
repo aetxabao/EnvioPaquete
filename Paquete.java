@@ -46,6 +46,9 @@ public class Paquete
     public Paquete(Dimension dimension, double peso)
     {
         //TODO
+        this.dimension = dimension;
+        
+        this.peso = peso;
 
     }
 
@@ -54,7 +57,7 @@ public class Paquete
      */
     public Dimension getDimension() 
     {
-        return this.dimension;
+        return dimension;
 
     }
 
@@ -86,7 +89,9 @@ public class Paquete
     public double getPesoVolumetrico() 
     {
         //TODO
-       return 0;
+
+        double pesoVolumetrico = getVolumen()/5000; 
+       return pesoVolumetrico;
 
     }
 
@@ -98,10 +103,14 @@ public class Paquete
     public double calcularPesoFacturable() 
     {
         //TODO
-       return 0;
-
+        
+        if(peso < getPesoVolumetrico())
+        {
+            return getPesoVolumetrico();
+        }
+       return peso;
+       
     }
-
 
     /**
      * Devuelve una copia exacta al objeto actual

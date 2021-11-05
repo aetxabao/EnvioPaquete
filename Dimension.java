@@ -13,7 +13,8 @@ public class Dimension
     /**
      * constructor  
      */
-    public Dimension(double alto, double ancho, double largo)    {
+    public Dimension(double alto, double ancho, double largo) 
+    {
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
@@ -23,21 +24,24 @@ public class Dimension
     /**
      * accesor para  el alto
      */
-    public double getAlto()    {
+    public double getAlto() 
+    {
         return alto;
     }
 
     /**
      * accesor para  el ancho
      */
-    public double getAncho()    {
+    public double getAncho() 
+    {
         return ancho;
     }
 
     /**
      * accesor para  el largo
      */
-    public double getLargo()    {
+    public double getLargo() 
+    {
         return largo;
     }
 
@@ -45,7 +49,8 @@ public class Dimension
      * calcula y devuelve el volumen de la dimensión (en cm3)
      * El volumen = alto x ancho x largo
      */
-    public double getVolumen() {
+    public double getVolumen() 
+    {
         double volumen = this.getAlto() * this.getAncho() * this.getLargo();
         return volumen;
     }
@@ -53,7 +58,8 @@ public class Dimension
     /**
      * Devuelve una copia exacta al objeto actual
      */
-    public Dimension clone() {
+    public Dimension clone()
+    {
         Dimension dimensionClone = new Dimension(this.getAlto(), 
         this.getAncho(), this.getLargo());
         return dimensionClone;
@@ -63,7 +69,8 @@ public class Dimension
      * Repesentación textual de la dimensión
      * (leer enunciado)
      */
-    public String toString() {
+    public String toString() 
+    {
         String str = String.format("%20s%10.2f(cm)\n%20s%10.2f(cm)\n%20s%10.2f(cm)", "Alto:", this.alto, "Ancho:", this.ancho, "Largo:", this.largo);
         return str;
     }
@@ -73,7 +80,8 @@ public class Dimension
      * Este método se incluye como método de prueba
      * de la clase Dimension
      */
-    public void print() {
+    public void print() 
+    {
         System.out.println(this.toString());
     }
 
