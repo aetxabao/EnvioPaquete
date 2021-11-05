@@ -47,7 +47,7 @@ public class Dimension
      */
     public double getVolumen() {
        //TODO
-       return 0;
+       return alto * ancho * largo;
 
     }
     
@@ -55,17 +55,19 @@ public class Dimension
      * Devuelve una copia exacta al objeto actual
      */
     public Dimension clone() {
-        //TODO
-        return null;
+        Dimension clone = new Dimension(alto,ancho,largo);
+        return clone;
 
     }
-
+     
     /**
      * Repesentación textual de la dimensión
      * (leer enunciado)
      */
     public String toString() {
-        //TODO
+        System.out.println("                    Alto:          "+ alto + "(cm) ");
+        System.out.println("                    Ancho:          "+ ancho + "(cm) ");
+        System.out.println("                    Largo:          "+ largo + "(cm) ");
         return null;
 
     }
