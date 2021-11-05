@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * Adrian Garcia Galera -   Nombre autor
  *  
  */
 public class Envio
@@ -55,9 +55,17 @@ public class Envio
      * (dependerá de cuántos paquetes estén a null)
      */
     public int getNumeroPaquetes() {
-        //TODO
-       return 0;
-
+        int numeroPaquetes = 0;
+        if(paquete1 != null){
+            numeroPaquetes = 1;
+        }
+        if(paquete2 != null){
+            numeroPaquetes = 2;
+        }
+        if(paquete3 != null){
+            numeroPaquetes = 3;
+        }
+        return numeroPaquetes;
     }
 
     /**
@@ -66,7 +74,7 @@ public class Envio
      */
     public boolean isEnvioCompleto() {
        //TODO
-       return false;
+       return getNumeroPaquetes() == 3;
 
     }
 
@@ -78,8 +86,19 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-       //TODO
-        
+       if (isEnvioCompleto()){
+           System.out.println("No se admiten más paquetes en el envío");
+       }else{
+           if(paquete1 != null && paquete2 != null && paquete3 == null){
+               paquete3 = paquete;
+           }
+           if(paquete1 != null && paquete2 == null && paquete3 == null){
+               paquete2 = paquete;
+           }
+           if(paquete1 == null && paquete2 == null && paquete3 == null){
+               paquete1 = paquete;
+           }
+       }
 
     }
 
@@ -95,9 +114,26 @@ public class Envio
      *  
      */
     public double calcularCosteTotalEnvio() {
-        //TODO
-       return 0;
-
+       double pesoFacturableTotal = 0;
+       if(paquete3 != null){
+           pesoFacturableTotal = paquete1.calcularPesoFacturable()
+           + paquete2.calcularPesoFacturable()
+       + paquete3.calcularPesoFacturable();
+       }
+       if(paquete2 != null){
+           pesoFacturableTotal = paquete1.calcularPesoFacturable() 
+           + paquete2.calcularPesoFacturable();
+       }
+       if(paquete1 != null){
+           pesoFacturableTotal = paquete1.calcularPesoFacturable();
+       }
+       
+       
+       
+       
+       double precioEnvio = (Math.ceil(pesoFacturableTotal));
+       
+       return precioEnvio;
     }
 
     /**
@@ -106,8 +142,26 @@ public class Envio
      * (leer enunciado)
      */
     public String toString() {
-       //TODO
-       return null;
+       if(paquete3 != null){
+            return String.format("Nº de paquetes: " + getNumeroPaquetes() 
+       + "\nDescripcion del paquete 1:\n " + paquete1.toString() +
+       "\n\nDescripcion del paquete 2:\n " + paquete2.toString() +
+       "\n\nDescripcion del paquete 3:\n " + paquete3.toString() +
+       "\n\nCoste total envío: " + calcularCosteTotalEnvio());
+       }
+       if(paquete2 != null){
+           return String.format("Nº de paquetes: " + getNumeroPaquetes() 
+       + "\nDescripcion del paquete 1:\n " + paquete1.toString() +
+       "\n\nDescripcion del paquete 2:\n " + paquete2.toString() +
+       "\n\nCoste total envío: " + calcularCosteTotalEnvio());
+       }
+       if(paquete1 != null){
+            return String.format("Nº de paquetes: " + getNumeroPaquetes() 
+       + "\nDescripcion del paquete 1:\n " + paquete1.toString() +
+       "\n\nCoste total envío: " + calcularCosteTotalEnvio());
+       }
+       
+       return toString();
     }
 
     /**

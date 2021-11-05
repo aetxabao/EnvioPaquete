@@ -2,14 +2,13 @@
 /**
  *  Representa una dimensión
  *  
- *  @author - Nombre autor
+ * Adrian Garcia Galera - Nombre autor
  */
 public class Dimension  
 {
     private double alto;
     private double ancho;
     private double largo;
-
     /**
      * constructor  
      */
@@ -17,7 +16,6 @@ public class Dimension
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
-
     }   
 
     /**
@@ -46,17 +44,17 @@ public class Dimension
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-       //TODO
-       return 0;
-
+        double volumen;
+        volumen = alto * largo * ancho;
+        return volumen;
     }
     
     /**
      * Devuelve una copia exacta al objeto actual
      */
     public Dimension clone() {
-        //TODO
-        return null;
+        Dimension clon = new Dimension(this.alto, this.largo, this.ancho);
+        return clon;
 
     }
 
@@ -64,10 +62,10 @@ public class Dimension
      * Repesentación textual de la dimensión
      * (leer enunciado)
      */
-    public String toString() {
-        //TODO
-        return null;
-
+    public String toString(){
+        return String.format("Alto: " + alto + " cm\nLargo: " 
+        + largo + " cm\nAncho: " + ancho +
+        " cm\nVolumen: " + getVolumen() + " cm3");
     }
 
     /**
