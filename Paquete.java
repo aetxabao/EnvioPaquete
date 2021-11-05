@@ -95,7 +95,7 @@ public class Paquete
      */
     public Paquete clone() {
         Dimension dimension = this.dimension.clone();
-        Paquete paquete = new Paquete(dimension.clone(), peso);
+        Paquete paquete = new Paquete(dimension, peso);
         return paquete;
     }
 
