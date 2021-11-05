@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @author -   Joan García
  *  
  */
 public class Envio
@@ -13,7 +13,7 @@ public class Envio
     private Paquete paquete1;
     private Paquete paquete2;
     private Paquete paquete3;
-
+    private int numeroPaquetes;
     /**
      * Constructor  
      * Inicializa los paquetes a null (inicialmente
@@ -23,6 +23,7 @@ public class Envio
         this.paquete1 = null;
         this.paquete2 = null;
         this.paquete3 = null;
+        numeroPaquetes = 0;
 
     }
 
@@ -56,7 +57,21 @@ public class Envio
      */
     public int getNumeroPaquetes() {
         //TODO
-       return 0;
+        if(paquete1 == null && paquete2 == null && paquete3 == null){
+            numeroPaquetes = 0;
+        }
+        else if((paquete1 != null && paquete2 == null && paquete3 == null)) //|| (paquete1 == null && paquete2 != null && paquete3 == null) || (paquete1 == null && paquete2 == null && paquete3 != null))
+        {
+            numeroPaquetes = 1;
+        }
+        else if((paquete1 != null && paquete2 != null && paquete3 == null)) //|| (paquete1 == null && paquete2 != null && paquete3 != null) || (paquete1 != null && paquete2 == null && paquete3 != null))
+        {
+            numeroPaquetes = 2;
+        }
+        else if(paquete1 != null && paquete2 != null && paquete3 != null){
+            numeroPaquetes = 3;
+        }
+        return numeroPaquetes;
 
     }
 
@@ -65,8 +80,11 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean isEnvioCompleto() {
-       //TODO
-       return false;
+        //TODO
+        if(getNumeroPaquetes() == 3){
+            return true;
+        }
+        return false;
 
     }
 
@@ -78,8 +96,21 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-       //TODO
-        
+        //TODO
+        if(isEnvioCompleto() == true){
+            System.out.println("No se admiten más paquetes en el envío");
+        }
+        if(paquete1 == null){
+            paquete1 = paquete;
+        }
+        else if(paquete2 == null){
+            paquete2 = paquete;
+        }
+        else if(paquete3 == null){
+            paquete3 = paquete;
+        }
+        numeroPaquetes++;
+
 
     }
 
@@ -96,7 +127,23 @@ public class Envio
      */
     public double calcularCosteTotalEnvio() {
         //TODO
-       return 0;
+        double totalPesoF = 0;
+        double total;
+
+        // totalPesoF = paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable() 
+        // + paquete3.calcularPesoFacturable();;
+        // total = PRECIO_KILO * (Math.ceil(totalPesoF));
+        if(getNumeroPaquetes() == 1){
+            totalPesoF = paquete1.calcularPesoFacturable();
+        }
+        if(getNumeroPaquetes() == 2){
+            totalPesoF = paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable();
+        }
+        if(isEnvioCompleto() == true){
+            totalPesoF = paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable() + paquete3.calcularPesoFacturable();
+        }
+        total = PRECIO_KILO * (Math.ceil(totalPesoF));
+        return total;
 
     }
 
@@ -106,8 +153,24 @@ public class Envio
      * (leer enunciado)
      */
     public String toString() {
-       //TODO
-       return null;
+        //TODO
+        String str = ""; 
+        if(paquete1 != null && paquete2 == null && paquete3 == null){
+            String str1 = String.format("Nº de paquetes: %d \n\n%s \n\nCoste total envío: %.2f€" ,
+                getNumeroPaquetes(),paquete1.toString(), calcularCosteTotalEnvio());
+            return str1;
+        }
+        if(paquete1 != null && paquete2 != null && paquete3 == null){
+            String str2 = String.format("Nº de paquetes: %d \n\n%s \n\n%s \n\nCoste total envío: %.2f €" ,
+                getNumeroPaquetes(),paquete1.toString(),paquete2.toString(), calcularCosteTotalEnvio());
+            return str2;
+        }
+        if(paquete1 != null && paquete2 != null && paquete3 != null){
+            String str3 = String.format("Nº de paquetes: %d \n\n%s \n\n%s \n\n%s \n\nCoste total envío: %.2f €" ,
+                getNumeroPaquetes(),paquete1.toString(),paquete2.toString(), paquete3.toString(), calcularCosteTotalEnvio());
+            return str3;
+        }
+        return str;
     }
 
     /**
@@ -119,5 +182,4 @@ public class Envio
         System.out.println(this.toString());
     }
 
-    
 }
