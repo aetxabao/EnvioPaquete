@@ -3,7 +3,7 @@ import java.util.Random;
  *  Un objeto de esta clase guarda los datos de un
  *  paquete
  * 
- * @author - Nombre autor
+ * @author - David Orayen
  *  
  */
 public class Paquete 
@@ -18,9 +18,8 @@ public class Paquete
      * alto, ancho, largo (en cm) y peso 8 Kg
      */
     public Paquete()    {
-        //TODO
-         
-
+        Dimension dimension = new Dimension(40,30,50);
+        peso = 8;
     }
 
     /**
@@ -30,8 +29,11 @@ public class Paquete
      *  Se crea aquí el generador
      */
     public Paquete(double alto, double ancho, double largo)    {
-        //TODO
-
+        // Crear nueva dimension 
+        dimension = new Dimension(alto, ancho,largo);
+        // Numero random
+        generador = new Random();
+        peso = (generador.nextDouble()*6.0 + 2.0);
     }
 
     /**
@@ -41,7 +43,8 @@ public class Paquete
      */
     public Paquete(Dimension dimension, double peso)    {
         //TODO
-
+        this.dimension = dimension;
+        this.peso = peso;
     }
 
     /**
@@ -65,8 +68,8 @@ public class Paquete
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-       //TODO
-       return 0;
+
+        return this.dimension.getVolumen();
 
     }
 
@@ -75,8 +78,8 @@ public class Paquete
      * Peso volumétrico = volumen del paquete / 5000
      */
     public double getPesoVolumetrico() {
-        //TODO
-       return 0;
+        //Devolver el volumen del paquete/5000
+        return getVolumen() / 5000;
 
     }
 
@@ -86,20 +89,23 @@ public class Paquete
      *      
      */
     public double calcularPesoFacturable() {
-        //TODO
-       return 0;
+        // Si es menor le doy el volumetrico, si no, el peso real
+        if(getPesoVolumetrico() < peso){
+            return getPesoVolumetrico();
+        }else{
+            return peso;
+        }
 
     }
-
 
     /**
      * Devuelve una copia exacta al objeto actual
      * Se obtienen copias también de los objetos que contenga
      */
     public Paquete clone() {
-        //TODO
-       return null;
-
+        // Devuelve un paquete con lo que se puede modificar(dimension y peso)
+        Paquete paquete = new Paquete(dimension,peso);
+        return paquete;
     }
 
     /**
@@ -107,11 +113,17 @@ public class Paquete
      *  (leer enunciado)
      */
     public String toString() {
-        //TODO
-       return null;
-
+        // Se puede hacer con menos texto pero asi me entiendo 
+        String f = String.format("Descripción del paquete\n");
+        String h = String.format("%20s%10.2f(cm)\n", "Alto:", dimension.getAlto());
+        String a = String.format("%20s%10.2f(cm)\n", "Ancho:",dimension.getAncho());
+        String b = String.format("%20s%10.2f(cm)\n", "Largo:",dimension.getLargo());
+        String c = String.format("%20s%10.2f(Kg)\n", "Peso real:",calcularPesoFacturable());
+        String d = String.format("%20s%10.2f(cm3)\n", "Volumen:",getVolumen());
+        String e = String.format("%20s%10.2f(Kg)\n", "Peso Volumétrico:",getPesoVolumetrico());
+        return f+h+a+b+c+d+e;
     }
-    
+
     /**
      * Muestra en pantalla el objeto actual
      * Este método se incluye como método de prueba
@@ -120,7 +132,4 @@ public class Paquete
     public void print() {
         System.out.println(this.toString());
     }
-
-    
-
 }

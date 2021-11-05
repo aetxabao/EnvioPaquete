@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @author - David Orayen
  *  
  */
 public class Envio
@@ -55,9 +55,12 @@ public class Envio
      * (dependerá de cuántos paquetes estén a null)
      */
     public int getNumeroPaquetes() {
-        //TODO
-       return 0;
-
+        //Si esta en null no se añade.
+        int numP = 0;
+        if(this.getPaquete1() != null){numP++;}
+        if(this.getPaquete2() != null){numP++;}
+        if(this.getPaquete3() != null){numP++;}
+        return numP;
     }
 
     /**
@@ -65,8 +68,12 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean isEnvioCompleto() {
-       //TODO
-       return false;
+
+        if(getNumeroPaquetes() == 3){
+            return true;
+        }else{
+            return false;
+        }
 
     }
 
@@ -78,9 +85,16 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-       //TODO
-        
 
+        if(isEnvioCompleto() == true){
+            System.out.println("No se admiten más paquetes en el envío");
+        }else if(paquete1==null){
+            this.paquete1 = paquete;
+        }else if(paquete2==null){
+            this.paquete2 = paquete;
+        }else if(paquete3==null){
+            this.paquete3 = paquete;
+        }
     }
 
     /**
@@ -95,9 +109,19 @@ public class Envio
      *  
      */
     public double calcularCosteTotalEnvio() {
-        //TODO
-       return 0;
 
+        // Se saca el peso total facturable de todos los paquetes y se les da precio
+        double pFT = 0;
+        if(paquete1 != null){
+            pFT += paquete1.calcularPesoFacturable();
+        }
+        if(paquete2 != null){
+            pFT += paquete2.calcularPesoFacturable();
+        }
+        if(paquete3 != null){
+            pFT += paquete1.calcularPesoFacturable();
+        }
+        return Math.ceil(pFT) * PRECIO_KILO;
     }
 
     /**
@@ -106,8 +130,11 @@ public class Envio
      * (leer enunciado)
      */
     public String toString() {
-       //TODO
-       return null;
+        //Me iba antes pero no se porque ahora no me va.
+        String s = String.format("Nº de paquetes: " + paquete1.toString() +"\n"+ 
+                                paquete2.toString() + "\n" + paquete3.toString() + "\n" +
+                                "Coste total envío: " + calcularCosteTotalEnvio());
+        return s;
     }
 
     /**
@@ -119,5 +146,4 @@ public class Envio
         System.out.println(this.toString());
     }
 
-    
 }
