@@ -2,14 +2,13 @@
 /**
  *  Representa una dimensión
  *  
- *  @author - Nombre autor
+ *  @author - Xabi
  */
 public class Dimension  
 {
     private double alto;
     private double ancho;
     private double largo;
-
     /**
      * constructor  
      */
@@ -48,7 +47,7 @@ public class Dimension
     public double getVolumen() {
        //TODO
        return 0;
-
+       
     }
     
     /**
@@ -67,7 +66,6 @@ public class Dimension
     public String toString() {
         //TODO
         return null;
-
     }
 
     /**

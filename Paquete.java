@@ -3,7 +3,7 @@ import java.util.Random;
  *  Un objeto de esta clase guarda los datos de un
  *  paquete
  * 
- * @author - Nombre autor
+ * @author - xabi
  *  
  */
 public class Paquete 
@@ -11,15 +11,20 @@ public class Paquete
     private Random generador;
     private Dimension dimension;
     private double peso;
-
+    private double alto;
+    private double ancho;
+    private double largo;
+    private double volumen;
     /**
      * Constructor 1 sin parámetros
      * Crea el paquete con 40 , 30, 50 de
      * alto, ancho, largo (en cm) y peso 8 Kg
      */
     public Paquete()    {
-        //TODO
-         
+        alto = 40;
+        ancho = 30;
+        largo = 50;
+        peso = 8;
 
     }
 
@@ -31,7 +36,9 @@ public class Paquete
      */
     public Paquete(double alto, double ancho, double largo)    {
         //TODO
-
+        this.alto = alto;
+        this.ancho = ancho;
+        this.largo = largo;
     }
 
     /**
@@ -41,7 +48,8 @@ public class Paquete
      */
     public Paquete(Dimension dimension, double peso)    {
         //TODO
-
+        this.dimension = dimension;
+        this.peso = peso;
     }
 
     /**
@@ -66,7 +74,7 @@ public class Paquete
      */
     public double getVolumen() {
        //TODO
-       return 0;
+       return volumen;
 
     }
 
@@ -77,7 +85,7 @@ public class Paquete
     public double getPesoVolumetrico() {
         //TODO
        return 0;
-
+      
     }
 
     /**
