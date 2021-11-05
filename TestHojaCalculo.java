@@ -1,7 +1,7 @@
 
 /**
  * test
- * @author (inigo salinas) 
+ * @author (inigo salinas.) 
  */
 public class TestHojaCalculo
 {
