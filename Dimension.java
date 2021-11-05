@@ -44,7 +44,7 @@ public class Dimension
     {
         return largo;
     }
-
+    
     /**
      * calcula y devuelve el volumen de la dimensión (en cm3)
      * El volumen = alto x ancho x largo
@@ -71,7 +71,8 @@ public class Dimension
      */
     public String toString() 
     {
-        String str = String.format("%20s%10.2f(cm)\n%20s%10.2f(cm)\n%20s%10.2f(cm)", "Alto:", this.alto, "Ancho:", this.ancho, "Largo:", this.largo);
+        String str = String.format("%20s%10.2f(cm) \n %20s%10.2f(cm) \n %20s%10.2f(cm)",
+        "Alto:", this.alto, "Ancho:", this.ancho, "Largo:", this.largo);
         return str;
     }
 

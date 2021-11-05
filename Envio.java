@@ -21,6 +21,7 @@ public class Envio
      */
     public Envio()   
     {
+        
         this.paquete1 = null;
         this.paquete2 = null;
         this.paquete3 = null;
@@ -60,9 +61,11 @@ public class Envio
      */
     public int getNumeroPaquetes() 
     {
-        //TODO
-       return 0;
-
+       int numPaquetes = 0;
+        if (this.getPaquete1() != null) {numPaquetes++;}
+        if (this.getPaquete2() != null) {numPaquetes++;}
+        if (this.getPaquete3() != null) {numPaquetes++;}
+        return numPaquetes;
     }
 
     /**
@@ -72,8 +75,11 @@ public class Envio
     public boolean isEnvioCompleto() 
     {
        //TODO
+       if( getNumeroPaquetes() > 0 && getNumeroPaquetes() < 3)
+       {
+           return true;
+       }
        return false;
-
     }
 
     /**
@@ -85,9 +91,17 @@ public class Envio
      */
     public void addPaquete(Paquete paquete)
     {
-       //TODO
-        
-
+       if (isEnvioCompleto()) {
+            System.out.println("No se admiten más paquetes en el envío");
+            return;
+        }
+        if (this.getPaquete1() == null) {
+            this.paquete1 = paquete;
+        } else if (this.getPaquete2() == null) {
+            this.paquete2 = paquete;
+        } else {
+            this.paquete3 = paquete;
+        }
     }
 
     /**
@@ -103,20 +117,41 @@ public class Envio
      */
     public double calcularCosteTotalEnvio()
     {
-        //TODO
-       return 0;
-
+        double pesoFacturableTotal = 0;
+        if (getPaquete1() != null) {
+            pesoFacturableTotal += this.getPaquete1().calcularPesoFacturable();
+        }
+        if (getPaquete2() != null) {
+            pesoFacturableTotal += this.getPaquete2().calcularPesoFacturable();
+        }
+        if (getPaquete3() != null) {
+            pesoFacturableTotal += this.getPaquete3().calcularPesoFacturable();
+        }
+        return Math.ceil(pesoFacturableTotal) * this.PRECIO_KILO;
     }
 
-    /**
+        /**
      * Representación textual del envío
      * con el formato exacto indicado
      * (leer enunciado)
      */
     public String toString() 
     {
-       //TODO
-       return null;
+       String str = "Nº de paquetes: " + this.getNumeroPaquetes() + "\n";
+        if (paquete1 != null) {
+            str += paquete1.toString() + "\n";
+        }
+        if (paquete2 != null) {
+            str += paquete2.toString() + "\n";
+        }
+        if (paquete3 != null) {
+            str += paquete3.toString() + "\n";
+        }
+        String costeEnvio = String.format("--------------------------", 
+                                            "Coste total envío:", 
+                                            this.calcularCosteTotalEnvio());
+        str += costeEnvio;
+        return String.format(str);
     }
 
     /**

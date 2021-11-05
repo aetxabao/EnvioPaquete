@@ -130,12 +130,17 @@ public class Paquete
      */
     public String toString() 
     {
-        //TODO
-       return null;
+       
+        String longString = "";
+       longString = longString+dimension +"\n"+"               peso:   "+getPeso()+"(Kg)"+"\n" 
+       +"               Volumen:   "+getVolumen()+"(cm3)"+ "\n" 
+       + "               Peso Volumétrico:   "
+       +getPesoVolumetrico() +"(Kg)";
+       return longString;
 
     }
     
-    /**
+        /**
      * Muestra en pantalla el objeto actual
      * Este método se incluye como método de prueba
      * de la clase Paquete
