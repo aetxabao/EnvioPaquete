@@ -17,7 +17,6 @@ public class Dimension
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
-
     }   
 
     /**
@@ -46,20 +45,16 @@ public class Dimension
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-        //TODO
         double volumen = alto * ancho * largo;
         return volumen;
-
     }
 
     /**
      * Devuelve una copia exacta al objeto actual
      */
     public Dimension clone() {
-        //TODO
         Dimension dimension = new Dimension(alto, ancho, largo);
         return dimension;
-
     }
 
     /**
@@ -67,12 +62,10 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        //TODO
         String str;
         str = String.format("Alto:               %.2f(cm) \nAncho:              %.2f(cm) \nLargo:              %.2f(cm) \n", 
                             alto, ancho,largo);
         return str;
-
     }
 
     /**

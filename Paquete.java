@@ -18,7 +18,6 @@ public class Paquete
      * alto, ancho, largo (en cm) y peso 8 Kg
      */
     public Paquete()    {
-        //TODO
         dimension = new Dimension(40,30,50);
         peso = 8;
     }
@@ -30,7 +29,6 @@ public class Paquete
      *  Se crea aquí el generador
      */
     public Paquete(double alto, double ancho, double largo){
-        //TODO
         generador = new Random();
         dimension = new Dimension (alto,ancho,largo);
         peso = generador.nextInt(7) + 2;
@@ -42,7 +40,6 @@ public class Paquete
      * 
      */
     public Paquete(Dimension dimension, double peso){
-        //TODO
         this.dimension = dimension;
         this.peso = peso;
     }
@@ -66,7 +63,6 @@ public class Paquete
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-        //TODO
         return dimension.getVolumen();
     }
 
@@ -75,7 +71,6 @@ public class Paquete
      * Peso volumétrico = volumen del paquete / 5000
      */
     public double getPesoVolumetrico() {
-        //TODO
         double pesoVolumetrico = (getVolumen()/5000);
         return pesoVolumetrico;
     }
@@ -86,7 +81,6 @@ public class Paquete
      *      
      */
     public double calcularPesoFacturable() {
-        //TODO
         if(getPesoVolumetrico() > peso){
             return getPesoVolumetrico(); 
         }
@@ -100,7 +94,6 @@ public class Paquete
      * Se obtienen copias también de los objetos que contenga
      */
     public Paquete clone() {
-        //TODO
         Paquete paquete = new Paquete(dimension.clone(), peso);
         return paquete;
     }
@@ -110,7 +103,6 @@ public class Paquete
      *  (leer enunciado)
      */
     public String toString() {
-        //TODO
         String str;
         str =   
         String.format("Descripción del paquete \n%sPeso real:          %.2f(Kg) \nVolumen:            %.2f(cm³) \nPeso Volumétrico:   %.2f(Kg)",

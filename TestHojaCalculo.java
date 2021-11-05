@@ -3,11 +3,11 @@
  * @author - Joan García
  * 
  */
-
 public class TestHojaCalculo
 {
     public static void main(String[]args)
     {
+        
         Paquete paquete1 = new Paquete();
         Paquete paquete2 = new Paquete(40,60,40);
         
