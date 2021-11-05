@@ -94,6 +94,7 @@ public class Paquete
      * Se obtienen copias también de los objetos que contenga
      */
     public Paquete clone() {
+        Dimension dimension = this.dimension.clone();
         Paquete paquete = new Paquete(dimension.clone(), peso);
         return paquete;
     }
