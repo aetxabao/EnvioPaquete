@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @author -   Inigo Gutierrez
  *  
  */
 public class Envio
@@ -55,9 +55,19 @@ public class Envio
      * (dependerá de cuántos paquetes estén a null)
      */
     public int getNumeroPaquetes() {
-        //TODO
-       return 0;
-
+       int numeroPaquetes = 0;
+        if(getPaquete1() != null ){
+            numeroPaquetes ++;
+        }
+        if(getPaquete2() != null){
+            numeroPaquetes ++;
+        }
+        if(getPaquete3() != null){
+            numeroPaquetes ++;
+        }
+        
+       return numeroPaquetes;
+        
     }
 
     /**
@@ -65,9 +75,14 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean isEnvioCompleto() {
-       //TODO
-       return false;
-
+       switch(getNumeroPaquetes()){
+           case 1: return false;
+           
+           case 2: return false;
+           
+           default: return true;
+           
+       }
     }
 
     /**
@@ -78,8 +93,21 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-       //TODO
-        
+       if(isEnvioCompleto()){
+           System.out.println("----------------------------------------------------");
+           System.out.println("No se admiten más paquetes en el envío");
+       }
+       
+       if(getPaquete1() == null){
+           paquete1 = new Paquete();
+       }
+       else if(getPaquete2() == null){
+            paquete2 = new Paquete();
+       }
+       else{
+           paquete3 = new Paquete();
+       }
+       
 
     }
 
