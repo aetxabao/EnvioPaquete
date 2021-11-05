@@ -58,17 +58,17 @@ public class Envio
        int numeroPaquetes=0;
        if(this.paquete1 != null)
        {
-           return numeroPaquetes++;
+           numeroPaquetes++;
        }
        
        if(this.paquete2 != null)
        {
-           return numeroPaquetes++;
+           numeroPaquetes++;
        }
        
        if(this.paquete3 != null)
        {
-           return numeroPaquetes++;
+           numeroPaquetes++;
        }
        
        return numeroPaquetes;
