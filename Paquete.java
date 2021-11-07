@@ -3,7 +3,7 @@ import java.util.Random;
  *  Un objeto de esta clase guarda los datos de un
  *  paquete
  * 
- * @author - Nombre autor
+ * @author - Donovan Yaguana
  *  
  */
 public class Paquete 
@@ -18,9 +18,8 @@ public class Paquete
      * alto, ancho, largo (en cm) y peso 8 Kg
      */
     public Paquete()    {
-        //TODO
-         
-
+        dimension = new Dimension (40,30,50);        
+        peso = 8;
     }
 
     /**
@@ -30,8 +29,9 @@ public class Paquete
      *  Se crea aquí el generador
      */
     public Paquete(double alto, double ancho, double largo)    {
-        //TODO
-
+        generador = new Random();
+        dimension = new Dimension(alto, ancho, largo);
+        peso = generador.nextInt(6) + 2;
     }
 
     /**
@@ -40,8 +40,8 @@ public class Paquete
      * 
      */
     public Paquete(Dimension dimension, double peso)    {
-        //TODO
-
+        this.dimension = dimension;
+        this.peso = peso;
     }
 
     /**
@@ -65,9 +65,7 @@ public class Paquete
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-       //TODO
-       return 0;
-
+        return this.dimension.getVolumen();
     }
 
     /**
@@ -75,9 +73,8 @@ public class Paquete
      * Peso volumétrico = volumen del paquete / 5000
      */
     public double getPesoVolumetrico() {
-        //TODO
-       return 0;
-
+        double pesoVolumetrico = dimension.getVolumen() /5000;
+        return pesoVolumetrico;
     }
 
     /**
@@ -87,10 +84,9 @@ public class Paquete
      */
     public double calcularPesoFacturable() {
         //TODO
-       return 0;
+        return 0;
 
     }
-
 
     /**
      * Devuelve una copia exacta al objeto actual
@@ -98,8 +94,8 @@ public class Paquete
      */
     public Paquete clone() {
         //TODO
-       return null;
-
+        Paquete paquete= new Paquete();
+        return paquete;
     }
 
     /**
@@ -108,10 +104,10 @@ public class Paquete
      */
     public String toString() {
         //TODO
-       return null;
+        return null;
 
     }
-    
+
     /**
      * Muestra en pantalla el objeto actual
      * Este método se incluye como método de prueba
@@ -120,7 +116,5 @@ public class Paquete
     public void print() {
         System.out.println(this.toString());
     }
-
-    
 
 }

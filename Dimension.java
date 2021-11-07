@@ -2,7 +2,7 @@
 /**
  *  Representa una dimensión
  *  
- *  @author - Nombre autor
+ *  @author - Donovan Yaguana
  */
 public class Dimension  
 {
@@ -46,18 +46,17 @@ public class Dimension
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-       //TODO
-       return 0;
-
+        double volumen; 
+        volumen= alto * ancho * largo;
+        return volumen;
     }
-    
+
     /**
      * Devuelve una copia exacta al objeto actual
      */
     public Dimension clone() {
-        //TODO
-        return null;
-
+        Dimension dimension = new Dimension(alto,ancho,largo);
+        return dimension;
     }
 
     /**
@@ -65,8 +64,8 @@ public class Dimension
      * (leer enunciado)
      */
     public String toString() {
-        //TODO
-        return null;
+        return String.format ("Alto: " + alto + "cm\n" + "Largo: " + largo + "cm\n" 
+        + "Ancho: "+ancho + "cm\n");
 
     }
 
@@ -79,5 +78,4 @@ public class Dimension
         System.out.println(this.toString());
     }
 
-    
 }

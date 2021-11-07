@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @author -   Donovan Yaguana
  *  
  */
 public class Envio
@@ -55,9 +55,20 @@ public class Envio
      * (dependerá de cuántos paquetes estén a null)
      */
     public int getNumeroPaquetes() {
-        //TODO
-       return 0;
+        int numPaquetes = 0;
 
+        if (paquete1 != null){
+            numPaquetes++;
+        }
+
+        if (paquete2 != null){
+            numPaquetes++;
+        }
+
+        if (paquete3 != null){
+            numPaquetes++;
+        }
+        return numPaquetes;
     }
 
     /**
@@ -65,8 +76,14 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean isEnvioCompleto() {
-       //TODO
-       return false;
+        int numPaquetes = getNumeroPaquetes();
+
+        if (numPaquetes == 3){
+            return true;
+        } else if ( numPaquetes != 3){
+            return false;
+        }
+        return true;
 
     }
 
@@ -78,9 +95,16 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-       //TODO
-        
-
+        if (isEnvioCompleto() == true){
+            System.out.println("No se admiten más paquetes en el envío");
+        }
+        else if (paquete1 != null){
+            paquete1 = paquete;
+        }else if (paquete2 != null){
+            paquete2 = paquete;
+        }else if (paquete3 != null){
+            paquete3 = paquete;
+        }
     }
 
     /**
@@ -95,9 +119,24 @@ public class Envio
      *  
      */
     public double calcularCosteTotalEnvio() {
-        //TODO
-       return 0;
+        double pesoTotalFacturable = 0;
+        double costeTotal;
 
+        //TODO
+        if(paquete1 != null){
+            pesoTotalFacturable += this.paquete1.calcularPesoFacturable();
+        }
+
+        if(paquete2 != null){
+            pesoTotalFacturable +=this.paquete2.calcularPesoFacturable();
+        }
+
+        if(paquete3 != null){
+            pesoTotalFacturable +=this.paquete3.calcularPesoFacturable();
+        }
+
+        costeTotal= Math.ceil(pesoTotalFacturable)*PRECIO_KILO;
+        return costeTotal;
     }
 
     /**
@@ -106,8 +145,8 @@ public class Envio
      * (leer enunciado)
      */
     public String toString() {
-       //TODO
-       return null;
+        //TODO
+        return null;
     }
 
     /**
@@ -119,5 +158,4 @@ public class Envio
         System.out.println(this.toString());
     }
 
-    
 }
