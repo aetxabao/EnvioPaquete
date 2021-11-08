@@ -1,83 +1,75 @@
 
 /**
- *  Representa una dimensión
- *  
- *  @author - Nombre autor
+ * Representa una dimensión
+ * 
+ * @author - Nombre autor
  */
-public class Dimension  
-{
+public class Dimension {
     private double alto;
     private double ancho;
     private double largo;
 
     /**
-     * constructor  
+     * constructor
      */
-    public Dimension(double alto, double ancho, double largo)    {
+    public Dimension(double alto, double ancho, double largo) {
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
 
-    }   
+    }
 
     /**
-     * accesor para  el alto
+     * accesor para el alto
      */
-    public double getAlto()    {
+    public double getAlto() {
         return alto;
     }
 
     /**
-     * accesor para  el ancho
+     * accesor para el ancho
      */
-    public double getAncho()    {
+    public double getAncho() {
         return ancho;
     }
 
     /**
-     * accesor para  el largo
+     * accesor para el largo
      */
-    public double getLargo()    {
+    public double getLargo() {
         return largo;
     }
 
     /**
-     * calcula y devuelve el volumen de la dimensión (en cm3)
-     * El volumen = alto x ancho x largo
+     * calcula y devuelve el volumen de la dimensión (en cm3) El volumen = alto x
+     * ancho x largo
      */
     public double getVolumen() {
-       //TODO
-       return 0;
-
+        return alto * ancho * largo;
     }
-    
+
     /**
      * Devuelve una copia exacta al objeto actual
      */
     public Dimension clone() {
-        //TODO
-        return null;
-
+        return new Dimension(this.alto, this.ancho, this.largo);
     }
 
     /**
-     * Repesentación textual de la dimensión
-     * (leer enunciado)
+     * Repesentación textual de la dimensión (leer enunciado)
      */
     public String toString() {
-        //TODO
-        return null;
-
+        return String.format("%20s:%10.2f(cm)\n", "Alto", this.alto)
+                + String.format("%20s:%10.2f(cm)\n", "Ancho", this.ancho)
+                + String.format("%20s:%10.2f(cm)\n", "Largo", this.largo);
     }
 
     /**
-     * Muestra en pantalla el objeto actual
-     * Este método se incluye como método de prueba
-     * de la clase Dimension
+     * Muestra en pantalla el objeto actual Este método se incluye como método de
+     * prueba de la clase Dimension
      */
     public void print() {
         System.out.println(this.toString());
     }
 
-    
 }
