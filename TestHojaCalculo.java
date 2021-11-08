@@ -5,7 +5,7 @@
  * @author -
  * 
  */
-public class TestEnvio {
+public class TestHojaCalculo {
 
     /**
      * Código para probar todas las clases (leer enunciado)
